@@ -1,5 +1,3 @@
-# app/ui.R
-
 # =========================
 # UI
 # Customer Segmentation Dashboard
