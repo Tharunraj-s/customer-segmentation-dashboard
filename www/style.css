@@ -1,0 +1,258 @@
+/* =========================
+   Global
+========================= */
+body {
+  background: #f5f7fb;
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   Header
+========================= */
+.app-header {
+  margin-bottom: 1.5rem;
+  padding: 1rem 0 0.25rem 0;
+}
+
+.app-title-wrap {
+  padding: 0.25rem 0;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.app-subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 0;
+}
+
+/* =========================
+   Sidebar
+========================= */
+.sidebar-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.sidebar-notes {
+  padding-left: 1.1rem;
+  margin-bottom: 0;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.sidebar-notes li {
+  margin-bottom: 0.45rem;
+}
+
+/* =========================
+   Main content
+========================= */
+.main-content {
+  padding-bottom: 2rem;
+}
+
+/* =========================
+   KPI cards
+========================= */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.kpi-card {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: #ffffff;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kpi-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+}
+
+.kpi-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.kpi-subtitle {
+  margin-top: 0.45rem;
+  font-size: 0.84rem;
+  color: #9ca3af;
+}
+
+.kpi-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  border-left: 5px solid #2563eb;
+}
+
+.kpi-green {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+  border-left: 5px solid #16a34a;
+}
+
+.kpi-purple {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+  border-left: 5px solid #8b5cf6;
+}
+
+.kpi-orange {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+  border-left: 5px solid #f59e0b;
+}
+
+.kpi-default {
+  background: #ffffff;
+  border-left: 5px solid #64748b;
+}
+
+/* =========================
+   Dashboard grid + cards
+========================= */
+.dashboard-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.dashboard-grid.two-col {
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+}
+
+.dashboard-card {
+  border: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.06) !important;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.card-header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #eef2f7 !important;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.card-body {
+  padding: 1rem 1rem 0.8rem 1rem !important;
+}
+
+/* =========================
+   Tabs
+========================= */
+.nav-tabs {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-tabs .nav-link {
+  color: #6b7280;
+  font-weight: 600;
+  border: none;
+}
+
+.nav-tabs .nav-link.active {
+  color: #2563eb;
+  background: transparent;
+  border-bottom: 3px solid #2563eb;
+}
+
+/* =========================
+   Inputs
+========================= */
+.form-control,
+.form-select,
+.selectize-input,
+.shiny-input-container input {
+  border-radius: 12px !important;
+  border-color: #d1d5db !important;
+  box-shadow: none !important;
+}
+
+.irs--shiny .irs-bar {
+  background: #2563eb !important;
+}
+
+.irs--shiny .irs-single,
+.irs--shiny .irs-from,
+.irs--shiny .irs-to {
+  background: #2563eb !important;
+}
+
+/* =========================
+   DataTables
+========================= */
+.dataTables_wrapper .dataTables_filter input {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 0.35rem 0.5rem;
+}
+
+table.dataTable thead th {
+  background: #f8fafc;
+  color: #374151;
+  font-weight: 700;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+table.dataTable tbody td {
+  vertical-align: middle;
+}
+
+/* =========================
+   Plotly / plot spacing
+========================= */
+.plotly html-widget,
+.shiny-plot-output {
+  width: 100% !important;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 1200px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid.two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.92rem;
+  }
+}
