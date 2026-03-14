@@ -1,5 +1,3 @@
-# scripts/04_clustering_prep.R
-
 library(readr)
 library(dplyr)
 library(cluster)

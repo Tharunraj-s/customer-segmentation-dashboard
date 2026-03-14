@@ -1,8 +1,3 @@
-# =========================
-# Customer Segmentation Dashboard
-# Step 1: Data Cleaning
-# =========================
-
 # -------------------------
 # Load libraries
 # -------------------------
@@ -107,11 +102,11 @@ clean_data <- raw_data %>%
     Quantity > 0,
     UnitPrice > 0
   ) %>%
-  filter(!str_detect(InvoiceNo, "^C")) %>%   # remove cancelled invoices
+  filter(!str_detect(InvoiceNo, "^C")) %>%
   distinct()
 
 # -------------------------
-# Optional: normalize text labels
+# Normalize text labels
 # -------------------------
 clean_data <- clean_data %>%
   mutate(
@@ -122,26 +117,50 @@ clean_data <- clean_data %>%
   )
 
 # -------------------------
+# Reduce UK rows by 50%
+# Keep all non-UK rows
+# -------------------------
+set.seed(42)
+
+uk_data <- clean_data %>%
+  filter(Country == "United Kingdom")
+
+non_uk_data <- clean_data %>%
+  filter(Country != "United Kingdom")
+
+uk_sampled <- uk_data %>%
+  slice_sample(prop = 0.50)
+
+clean_data_reduced <- bind_rows(non_uk_data, uk_sampled) %>%
+  arrange(InvoiceDate, InvoiceNo)
+
+# -------------------------
 # Basic summary checks
 # -------------------------
 cat("Cleaning completed.\n\n")
-cat("Rows before cleaning :", nrow(raw_data), "\n")
-cat("Rows after cleaning  :", nrow(clean_data), "\n")
-cat("Rows removed         :", nrow(raw_data) - nrow(clean_data), "\n\n")
+cat("Rows before cleaning           :", nrow(raw_data), "\n")
+cat("Rows after cleaning            :", nrow(clean_data), "\n")
+cat("Rows after UK downsampling     :", nrow(clean_data_reduced), "\n")
+cat("Rows removed by cleaning       :", nrow(raw_data) - nrow(clean_data), "\n")
+cat("Rows removed by UK reduction   :", nrow(clean_data) - nrow(clean_data_reduced), "\n\n")
 
-cat("Unique customers     :", n_distinct(clean_data$CustomerID), "\n")
-cat("Unique invoices      :", n_distinct(clean_data$InvoiceNo), "\n")
-cat("Unique products      :", n_distinct(clean_data$StockCode), "\n")
-cat("Unique countries     :", n_distinct(clean_data$Country), "\n\n")
+cat("UK rows before reduction       :", nrow(uk_data), "\n")
+cat("UK rows after reduction        :", nrow(uk_sampled), "\n")
+cat("Non-UK rows kept               :", nrow(non_uk_data), "\n\n")
+
+cat("Unique customers              :", n_distinct(clean_data_reduced$CustomerID), "\n")
+cat("Unique invoices               :", n_distinct(clean_data_reduced$InvoiceNo), "\n")
+cat("Unique products               :", n_distinct(clean_data_reduced$StockCode), "\n")
+cat("Unique countries              :", n_distinct(clean_data_reduced$Country), "\n\n")
 
 cat("Date range:\n")
-cat("From:", as.character(min(clean_data$InvoiceDate, na.rm = TRUE)), "\n")
-cat("To  :", as.character(max(clean_data$InvoiceDate, na.rm = TRUE)), "\n\n")
+cat("From:", as.character(min(clean_data_reduced$InvoiceDate, na.rm = TRUE)), "\n")
+cat("To  :", as.character(max(clean_data_reduced$InvoiceDate, na.rm = TRUE)), "\n\n")
 
 # -------------------------
 # Save cleaned dataset
 # -------------------------
-write_csv(clean_data, output_file)
+write_csv(clean_data_reduced, output_file)
 
-cat("Cleaned dataset saved to:\n")
+cat("Reduced cleaned dataset saved to:\n")
 cat(output_file, "\n")

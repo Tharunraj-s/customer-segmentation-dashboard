@@ -1,5 +1,0 @@
-Cluster,Customers,AvgRecency,AvgFrequency,AvgMonetary,AvgBasketValue,AvgItemsPerOrder,AvgTotalQuantity,AvgUniqueProducts,AvgLifespanDays,TopSegment,TopSpendingBand,TopFrequencyBand,ClusterLabel
-1,2,163.63,1.5,122828.05,80709.93,57356.75,77606,2,102.49,At Risk,Premium Value,Occasional,Regular Customers
-2,1296,186.2,1.35,241.43,196.63,107.14,129.77,15.21,21.05,Promising,Low Value,One-Time,Dormant / Churn Risk
-3,1133,28.17,10.49,5929.41,567.68,338.71,3429.05,140.49,283.19,At Risk,High Value,Frequent,Recently Active
-4,1907,68.22,2.57,857.19,397.94,242.4,502.98,46.09,114.82,At Risk,Medium Value,Occasional,Regular Customers

@@ -1,8 +1,3 @@
-# =========================
-# Customer Segmentation Dashboard
-# Step 3: Customer Summary + RFM
-# =========================
-
 # -------------------------
 # Load libraries
 # -------------------------

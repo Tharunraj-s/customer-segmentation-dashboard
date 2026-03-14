@@ -1,10 +1,3 @@
-# scripts/02_feature_engineering.R
-
-# =========================
-# Customer Segmentation Dashboard
-# Step 2: Feature Engineering
-# =========================
-
 # -------------------------
 # Load libraries
 # -------------------------
